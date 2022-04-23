@@ -1,7 +1,7 @@
 .app {
     position: fixed;
-    width: 100vmax;
-    height: 100vmax;
+    width: 100%;
+    height: 100%;
     left: 0px;
     top: 0px;
     background: #E5E5E5;
@@ -9,20 +9,46 @@
 }
 
 .background {
-    position: absolute;
-    top: 0vh;
-    left: 0vw;
-    width: 100vw;
-    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
     background-image: linear-gradient(to bottom, rgba(190, 192, 249, 255), rgba(137, 139, 196, 255));
 }
 
 .container {
-    position: absolute;
+    position: sticky;
+    display: block;
     width: auto;
-    height: 100vmax;
+    height: 100%;
     top: 135px;
     left: calc(50vw - 400px/2);
     right: calc(50vw - 400px/2);
     overflow: auto;
+    overflow-block: scroll;
+}
+
+.content {
+    position: relative;
+    display: inline;
+    width: auto;
+    height: 100%;
+    top: 135px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        right: 0px;
+        top: 135px;
+        bottom: 0px;
+        overflow: auto;
+        overflow-block: scroll;
+    }
 }
