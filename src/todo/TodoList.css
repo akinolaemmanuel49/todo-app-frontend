@@ -1,0 +1,8 @@
+.todoItems {
+    position: sticky;
+    list-style-type: none;
+    width: 100%;
+    height: fit-content;
+    padding-inline-start: 0px;
+    margin: auto;
+}
