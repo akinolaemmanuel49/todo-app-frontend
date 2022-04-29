@@ -1,0 +1,104 @@
+.navBar {
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    background-color: #000000;
+}
+
+.navBarDropdownButton {
+    position: fixed;
+    display: inline-block;
+    width: 50px;
+    top: 5px;
+    left: 10px;
+}
+
+.dropdownImage {
+    width: 40px;
+    height: 40px;
+}
+
+.navBarProfileView {
+    display: none;
+    position: fixed;
+    background-color: #000000;
+    min-width: 300px;
+    min-height: 100vh;
+    left: 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 0px 0px;
+    z-index: 1;
+}
+
+.navBarDropdownButton:hover .dropdownImage {
+    transform: rotate(90deg);
+}
+
+.navBarDropdownButton:hover .navBarProfileView {
+    display: block;
+}
+
+.profileImageContainer {
+    margin: auto;
+    margin-top: 25px;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+
+.profileImage {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+
+.greeting {
+    position: absolute;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 52px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.signout a {
+    position: absolute;
+    width: 85px;
+    height: 25px;
+    left: calc(300px / 2 - 85px/2);
+    right: calc(300px/ 2 - 85px/2);
+    top: 350px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    color: #FF0000;
+    text-decoration: none;
+}
+
+.applicationName a {
+    position: absolute;
+    left: calc(50vw - 175px/2);
+    right: calc(50vw - 175px/2);
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 50px;
+    align-items: center;
+    text-align: center;
+    word-break: break-all;
+    color: #FFFFFF;
+    text-decoration: none;
+}
