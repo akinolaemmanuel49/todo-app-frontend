@@ -1,0 +1,53 @@
+/* .todoItemOuter {
+    position: relative;
+    list-style-type: none;
+    width: 300px;
+    height: 65px;
+    padding-inline-start: 0px;
+} */
+
+.todoItemInner {
+    position: relative;
+    width: 300px;
+    height: 60px;
+    left: calc(50% - 300px/2);
+    right: calc(50% - 300px/2);
+    box-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.25);
+    top: 25px;
+    margin-bottom: 5px;
+}
+
+.todoItemInput {
+    position: absolute;
+    width: 160px;
+    height: 50px;
+    border: 5px solid #000000;
+    left: 60px;
+    padding: 0px;
+    padding-left: 10px;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.todoItemInput:focus {
+    outline-style: solid;
+    outline-color: #FF00FF;
+    outline-width: 2.5px;
+    z-index: 2;
+}
+
+.todoDeleteItemButton {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: calc(220px + 20px);
+    border: 5px solid #000000;
+    background-color: #FFFFFF;
+}
