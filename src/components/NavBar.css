@@ -90,8 +90,8 @@
 
 .applicationName a {
     position: absolute;
-    left: calc(50vw - 175px/2);
-    right: calc(50vw - 175px/2);
+    left: calc(50vw - 200px/2);
+    right: calc(50vw - 200px/2);
     font-family: 'Jost';
     font-style: normal;
     font-weight: 900;

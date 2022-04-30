@@ -1,0 +1,16 @@
+.todoDeleteItemButton {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: calc(220px + 20px);
+    border: 5px solid #000000;
+    background-color: #FFFFFF;
+    z-index: 30;
+}
+
+.todoDeleteItemButton:hover {
+    outline-style: solid;
+    outline-color: #FFFFFF;
+    outline-width: 2.5px;
+    z-index: 1;
+}

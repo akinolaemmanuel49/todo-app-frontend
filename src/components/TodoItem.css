@@ -17,7 +17,7 @@
     margin-bottom: 15px;
 }
 
-.todoItemInput {
+.todoItem {
     position: absolute;
     width: 160px;
     height: 50px;
@@ -28,8 +28,9 @@
     font-family: 'Jost';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 35px;
+    font-size: 10px;
+    line-height: 10px;
+    word-break: break-word;
     display: flex;
     align-items: center;
     color: #000000;
@@ -44,22 +45,6 @@
 }
 
 .todoItemInput:hover {
-    outline-style: solid;
-    outline-color: #FFFFFF;
-    outline-width: 2.5px;
-    z-index: 1;
-}
-
-.todoDeleteItemButton {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    left: calc(220px + 20px);
-    border: 5px solid #000000;
-    background-color: #FFFFFF;
-}
-
-.todoDeleteItemButton:hover {
     outline-style: solid;
     outline-color: #FFFFFF;
     outline-width: 2.5px;
