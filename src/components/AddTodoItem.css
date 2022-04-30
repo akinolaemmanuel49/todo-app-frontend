@@ -35,9 +35,16 @@
 
 .addTodoItemInput:focus {
     outline-style: solid;
-    outline-color: #FF00FF;
+    outline-color: #FFFFFF;
     outline-width: 2.5px;
-    z-index: 2;
+    z-index: 1;
+}
+
+.addTodoItemInput:hover {
+    outline-style: solid;
+    outline-color: #FFFFFF;
+    outline-width: 2.5px;
+    z-index: 1;
 }
 
 .addTodoItemButton {
@@ -47,4 +54,11 @@
     left: calc(220px + 20px);
     border: 5px solid #000000;
     background-color: #FFFFFF;
+}
+
+.addTodoItemButton:hover {
+    outline-style: solid;
+    outline-color: #FFFFFF;
+    outline-width: 2.5px;
+    z-index: 1;
 }

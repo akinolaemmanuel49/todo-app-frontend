@@ -5,7 +5,7 @@ const AddTodoItem = () => {
   return (
     <div className="addTodoItemOuter">
       <div className="addTodoItemInner">
-        <input className="addTodoItemInput" type="text" />
+        <input className="addTodoItemInput" type="text" maxLength={128} />
         <button className="addTodoItemButton">
           <img src={plusSignImage} alt="ADD" />
         </button>

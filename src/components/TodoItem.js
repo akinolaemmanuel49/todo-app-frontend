@@ -6,7 +6,7 @@ const TodoItem = () => {
   return (
     <div className="todoItemInner">
       <DoneButton />
-      <input className="todoItemInput" type="text" />
+      <input className="todoItemInput" type="text" maxLength={128} />
       <button className="todoDeleteItemButton">
         <img src={deleteSignImage} alt="ADD" />
       </button>

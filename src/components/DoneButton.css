@@ -6,3 +6,10 @@
     background-color: #FFFFFF;
     z-index: 1;
 }
+
+.todoDoneButton:hover {
+    outline-style: solid;
+    outline-color: #FFFFFF;
+    outline-width: 2.5px;
+    z-index: 1;
+}
