@@ -84,8 +84,12 @@
     align-items: center;
     text-align: center;
     vertical-align: middle;
-    color: #FF0000;
+    color: #FFFFFF;
     text-decoration: none;
+}
+
+.signout a:hover {
+    color: #FF0000;
 }
 
 .applicationName a {
