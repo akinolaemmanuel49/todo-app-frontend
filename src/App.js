@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import AddTodoItem from "./components/AddTodoItem";
 import TodoItem from "./components/TodoItem";
-import TodoList from "./todo/TodoList";
+import TodoList from "./todos/TodoList";
 import "./App.css";
 
 const App = () => {
