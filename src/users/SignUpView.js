@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SignUpView.css";
 
 const SignUpView = () => {
@@ -32,15 +33,15 @@ const SignUpView = () => {
       </div>
       <div className="signUpButtonBox">
         <button className="signUpButton">
-          <span className="signUpButtonText">Sign in</span>
+          <span className="signUpButtonText">Sign up</span>
         </button>
       </div>
       <div className="textBox">
         <p className="text">
           Already have an account.{" "}
-          <a href="/#" className="signUpTextLink">
-            Sign up
-          </a>
+          <Link to="/" className="signInTextLink">
+            Sign in
+          </Link>
           .
         </p>
       </div>

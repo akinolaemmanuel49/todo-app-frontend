@@ -6,7 +6,13 @@ import "./DeleteButton.css";
 
 const DeleteButton = (props) => {
   const deleteRequest = () => {
-    axios.delete(baseUrl + "/todos/" + props.todoId).then((res) => {});
+    axios
+      .delete(baseUrl + "/todos/" + props.todoId, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then(() => {});
   };
   const handleClick = (e) => {
     deleteRequest();

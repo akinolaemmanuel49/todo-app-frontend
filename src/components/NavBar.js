@@ -1,7 +1,16 @@
 import "./NavBar.css";
 import dropdownImage from "../images/dropdown.svg";
+import { Link, useNavigate, useOutlet } from "react-router-dom";
+import SignInView from "../users/SignInView";
 
 const NavBar = (props) => {
+  const navigate = useNavigate();
+  const outlet = useOutlet();
+  const handleSignOut = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    outlet(<SignInView />);
+  };
   return (
     <div className="navBar">
       <div className="navBarDropdownButton">
@@ -22,12 +31,14 @@ const NavBar = (props) => {
             <p>Hello, {props.username}</p>
           </div>
           <div className="signout">
-            <a href="/#">Sign out</a>
+            <Link to={<SignInView />} onClick={handleSignOut}>
+              Sign out
+            </Link>
           </div>
         </div>
       </div>
       <div className="applicationName">
-        <a href="/#">TODO APP</a>
+        <Link to="/">TODO APP</Link>
       </div>
     </div>
   );

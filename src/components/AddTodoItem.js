@@ -8,9 +8,19 @@ const AddTodoItem = () => {
   const [todoContent, setTodoContent] = useState("");
 
   const postTodoContent = () => {
-    axios.post(baseUrl + "/todos", { todo: todoContent }).then((res) => {
-      setTodoContent("");
-    });
+    axios
+      .post(
+        baseUrl + "/todos",
+        { todo: todoContent },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+      .then((res) => {
+        setTodoContent("");
+      });
   };
   const handleAddTodoItem = (e) => {
     e.preventDefault();

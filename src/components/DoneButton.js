@@ -8,15 +8,27 @@ import checkmarkImageHidden from "../images/checkmarkHidden.svg";
 
 const DoneButton = (props) => {
   const getCurrentState = () => {
-    axios.get(baseUrl + "/todos/" + props.todoId + "/state").then((res) => {
-      setIsComplete(res.data);
-    });
+    axios
+      .get(baseUrl + "/todos/" + props.todoId + "/state", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        setIsComplete(res.data);
+      });
   };
   const [isComplete, setIsComplete] = useState(getCurrentState);
   const handleClick = () => {
-    axios.get(baseUrl + "/todos/" + props.todoId + "/toggle").then((res) => {
-      setIsComplete(res.data);
-    });
+    axios
+      .get(baseUrl + "/todos/" + props.todoId + "/toggle", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        setIsComplete(res.data);
+      });
   };
 
   return (
