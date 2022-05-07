@@ -39,7 +39,7 @@ const SignUpView = () => {
       <div className="textBox">
         <p className="text">
           Already have an account.{" "}
-          <Link to="/" className="signInTextLink">
+          <Link to="/signin" className="signInTextLink">
             Sign in
           </Link>
           .

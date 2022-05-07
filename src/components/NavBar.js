@@ -1,15 +1,13 @@
 import "./NavBar.css";
 import dropdownImage from "../images/dropdown.svg";
-import { Link, useNavigate, useOutlet } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import SignInView from "../users/SignInView";
 
 const NavBar = (props) => {
-  const navigate = useNavigate();
-  const outlet = useOutlet();
   const handleSignOut = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
-    outlet(<SignInView />);
+    <Navigate to="/signin" />;
   };
   return (
     <div className="navBar">

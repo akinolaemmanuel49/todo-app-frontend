@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { baseUrl } from "../constants";
-import { getJWTExpireTime } from "../utils";
 import "./SignInView.css";
 
 const SignInView = () => {
   const [usernameContent, setUsernameContent] = useState("");
   const [passwordContent, setPasswordContent] = useState("");
-  const navigate = useNavigate();
   const [accessToken, setAccessToken] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   const signIn = () => {
     axios
@@ -19,22 +19,24 @@ const SignInView = () => {
         password: passwordContent,
       })
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.access_token);
-        localStorage.setItem("refreshToken", res.data.refresh_token);
+        if (
+          res.data.message === "Invalid password" ||
+          res.data.message === "User not found"
+        ) {
+          navigate("/signin");
+          console.log("ROUTE TO SIGNIN");
+        } else {
+          localStorage.setItem("accessToken", res.data.access_token);
+          localStorage.setItem("refreshToken", res.data.refresh_token);
+          setIsAuthenticated(true);
+          navigate("/");
+        }
       });
   };
 
   useEffect(() => {
     setAccessToken(localStorage.getItem("accessToken"));
-    if (
-      getJWTExpireTime !== null &&
-      getJWTExpireTime(accessToken) < Date.now()
-    ) {
-      navigate("/signin");
-    } else {
-      navigate("/");
-    }
-  }, [accessToken, navigate]);
+  }, [accessToken, isAuthenticated]);
 
   return (
     <div className="background">
