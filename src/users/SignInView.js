@@ -9,39 +9,16 @@ const SignInView = (props) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // const handleSignIn = () => {
-  //   axios
-  //     .post(baseUrl + "/users/login", {
-  //       username: usernameContent,
-  //       password: passwordContent,
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data.message);
-  //       if (
-  //         res.data.message === "Invalid password" ||
-  //         res.data.message === "User not found"
-  //       ) {
-  //         navigate("/signin");
-  //         console.log("ROUTE TO SIGNIN");
-  //       } else {
-  //         localStorage.setItem("accessToken", res.data.access_token);
-  //         localStorage.setItem("refreshToken", res.data.refresh_token);
-  //         navigate("/");
-  //       }
-  //     });
-  // };
-
   const handleSignIn = (e) => {
     e.preventDefault();
-    AuthService.signin(username, password).then(
-      () => {
+    AuthService.signin(username, password)
+      .then(() => {
         navigate("/");
         window.location.reload();
-      },
-      (err) => {
+      })
+      .catch((err) => {
         console.error(err);
-      }
-    );
+      });
   };
   return (
     <div className="background">
