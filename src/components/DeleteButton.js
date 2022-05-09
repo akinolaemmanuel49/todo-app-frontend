@@ -1,9 +1,9 @@
-import axios from "axios";
+// import axios from "axios";
 
-import API_URL from "../utils/constants";
+// import API_URL from "../utils/constants";
 import deleteSignImage from "../images/deleteSign.svg";
 import "./DeleteButton.css";
-import authHeader from "../services/auth-header";
+// import authHeader from "../services/auth-header";
 import UserService from "../services/user.service";
 
 const DeleteButton = (props) => {
