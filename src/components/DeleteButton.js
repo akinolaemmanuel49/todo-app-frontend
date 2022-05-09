@@ -1,12 +1,19 @@
 import axios from "axios";
 
-import { baseUrl } from "../constants";
+import API_URL from "../utils/constants";
 import deleteSignImage from "../images/deleteSign.svg";
 import "./DeleteButton.css";
+import authHeader from "../services/auth-header";
 
 const DeleteButton = (props) => {
   const deleteRequest = () => {
-    axios.delete(baseUrl + "/todos/" + props.todoId).then((res) => {});
+    axios
+      .delete(API_URL + "/todos/" + props.todoId, {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then(() => {});
   };
   const handleClick = (e) => {
     deleteRequest();

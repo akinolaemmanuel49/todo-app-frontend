@@ -1,22 +1,28 @@
 import axios from "axios";
 import { useState } from "react";
-import { baseUrl } from "../constants";
 import "./AddTodoItem.css";
 import plusSignImage from "../images/plusSign.svg";
+import API_URL from "../utils/constants";
+import authHeader from "../services/auth-header";
 
 const AddTodoItem = () => {
   const [todoContent, setTodoContent] = useState("");
 
   const postTodoContent = () => {
-    axios.post(baseUrl + "/todos", { todo: todoContent }).then((res) => {
-      setTodoContent("");
-    });
+    axios
+      .post(
+        API_URL + "/todos",
+        { todo: todoContent },
+        { headers: authHeader() }
+      )
+      .then(() => {
+        setTodoContent("");
+      });
   };
   const handleAddTodoItem = (e) => {
     e.preventDefault();
     postTodoContent();
   };
-
   return (
     <div className="addTodoItemOuter">
       <div className="addTodoItemInner">

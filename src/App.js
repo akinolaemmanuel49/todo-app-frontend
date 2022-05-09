@@ -1,13 +1,20 @@
 import React from "react";
-import NavBar from "./components/NavBar";
-import AddTodoItem from "./components/AddTodoItem";
-import TodoItem from "./components/TodoItem";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import TodoList from "./todos/TodoList";
 import SignInView from "./users/SignInView";
 import SignUpView from "./users/SignUpView";
 import "./App.css";
 
 const App = () => {
-  return <></>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/signin" element={<SignInView />} />
+        <Route path="/signup" element={<SignUpView />} />
+        <Route path="/" element={<TodoList />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 export default App;
