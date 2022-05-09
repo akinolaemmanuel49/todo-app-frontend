@@ -1,43 +1,48 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { baseUrl } from "../constants";
+import AuthService from "../services/auth.service";
 import "./SignInView.css";
 
-const SignInView = () => {
-  const [usernameContent, setUsernameContent] = useState("");
-  const [passwordContent, setPasswordContent] = useState("");
-  const [accessToken, setAccessToken] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const SignInView = (props) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const signIn = () => {
-    axios
-      .post(baseUrl + "/users/login", {
-        username: usernameContent,
-        password: passwordContent,
-      })
-      .then((res) => {
-        if (
-          res.data.message === "Invalid password" ||
-          res.data.message === "User not found"
-        ) {
-          navigate("/signin");
-          console.log("ROUTE TO SIGNIN");
-        } else {
-          localStorage.setItem("accessToken", res.data.access_token);
-          localStorage.setItem("refreshToken", res.data.refresh_token);
-          setIsAuthenticated(true);
-          navigate("/");
-        }
-      });
+  // const handleSignIn = () => {
+  //   axios
+  //     .post(baseUrl + "/users/login", {
+  //       username: usernameContent,
+  //       password: passwordContent,
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data.message);
+  //       if (
+  //         res.data.message === "Invalid password" ||
+  //         res.data.message === "User not found"
+  //       ) {
+  //         navigate("/signin");
+  //         console.log("ROUTE TO SIGNIN");
+  //       } else {
+  //         localStorage.setItem("accessToken", res.data.access_token);
+  //         localStorage.setItem("refreshToken", res.data.refresh_token);
+  //         navigate("/");
+  //       }
+  //     });
+  // };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    AuthService.signin(username, password).then(
+      () => {
+        navigate("/");
+        window.location.reload();
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   };
-
-  useEffect(() => {
-    setAccessToken(localStorage.getItem("accessToken"));
-  }, [accessToken, isAuthenticated]);
-
   return (
     <div className="background">
       <div className="titleBox">
@@ -48,7 +53,8 @@ const SignInView = () => {
           className="usernameInput"
           type="text"
           placeholder="Username"
-          onChange={(e) => setUsernameContent(e.target.value)}
+          name="username"
+          onChange={(e) => setUsername(e.target.value)}
         />
       </div>
       <div className="passwordBox">
@@ -56,11 +62,12 @@ const SignInView = () => {
           className="passwordInput"
           type="password"
           placeholder="Password"
-          onChange={(e) => setPasswordContent(e.target.value)}
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="signInButtonBox">
-        <button type="submit" className="signInButton" onClick={signIn}>
+        <button type="submit" className="signInButton" onClick={handleSignIn}>
           <span className="signInButtonText">Sign in</span>
         </button>
       </div>

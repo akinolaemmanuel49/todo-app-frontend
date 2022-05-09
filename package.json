@@ -38,6 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://todo-app-backend.azurewebsites.net",
-  "homepage": "https://KrazyKahunaGuy.github.io/signin"
+  "proxy": "https://todo-app-backend.azurewebsites.net"
 }

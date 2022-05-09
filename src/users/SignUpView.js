@@ -1,20 +1,65 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./SignUpView.css";
 
-const SignUpView = () => {
+import "./SignUpView.css";
+import AuthService from "../services/auth.service";
+
+const SignUpView = (props) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  // const handleSignUp = () => {
+  //   axios
+  //     .post(baseUrl + "/users", {
+  //       username: username,
+  //       email: email,
+  //       password: password,
+  //       confirm_password: confirmPassword,
+  //     })
+  //     .then((res) => {
+  //       if (res.data.message) {
+  //         navigate("/signup");
+  //       } else {
+  //         navigate("/signin");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log("ERROR:", err);
+  //     });
+  // };
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    AuthService.signup(username, email, password, confirmPassword).then(
+      (res) => {
+        console.log(res.data);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+  };
+
   return (
     <div className="background">
       <div className="titleBox">
         <h1>Sign up</h1>
       </div>
       <div className="usernameBox">
-        <input className="usernameInput" type="text" placeholder="Username" />
+        <input
+          className="usernameInput"
+          type="text"
+          placeholder="Username"
+          onChange={(e) => setUsername(e.target.value)}
+        />
       </div>
       <div className="emailBox">
         <input
           className="emailInput"
           type="email"
           placeholder="johndoe@mail.com"
+          onChange={(e) => setEmail(e.target.value)}
         ></input>
       </div>
       <div className="passwordBox">
@@ -22,6 +67,7 @@ const SignUpView = () => {
           className="passwordInput"
           type="password"
           placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       <div className="confirmPasswordBox">
@@ -29,10 +75,11 @@ const SignUpView = () => {
           className="confirmPasswordInput"
           type="password"
           placeholder="Confirm password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
       <div className="signUpButtonBox">
-        <button className="signUpButton">
+        <button className="signUpButton" onClick={handleSignUp}>
           <span className="signUpButtonText">Sign up</span>
         </button>
       </div>

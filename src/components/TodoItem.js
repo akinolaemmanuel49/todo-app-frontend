@@ -1,15 +1,32 @@
+import { useState } from "react";
+
+import UserService from "../services/user.service";
 import "./TodoItem.css";
 import DoneButton from "./DoneButton";
 import DeleteButton from "./DeleteButton";
 
 const TodoItem = (props) => {
+  const [isDone, setIsDone] = useState(props.done);
+
+  const toggleTodoState = () => {
+    if (isDone) {
+      setIsDone(false);
+    } else {
+      setIsDone(true);
+    }
+    UserService.toggleTodoState(props.id);
+  };
   return (
     <div className="todoItemInner">
-      <DoneButton todoId={props.todoId} />
+      <DoneButton
+        todoId={props.id}
+        isDone={props.done}
+        onClick={toggleTodoState}
+      />
       <span className="todoItem" type="text">
-        {props.todoContent}
+        {props.todo}
       </span>
-      <DeleteButton todoId={props.todoId} />
+      <DeleteButton todoId={props.id} />
     </div>
   );
 };

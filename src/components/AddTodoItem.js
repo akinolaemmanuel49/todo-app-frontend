@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { baseUrl } from "../constants";
 import "./AddTodoItem.css";
 import plusSignImage from "../images/plusSign.svg";
+import API_URL from "../utils/constants";
+import authHeader from "../services/auth-header";
 
 const AddTodoItem = () => {
   const [todoContent, setTodoContent] = useState("");
@@ -10,15 +11,11 @@ const AddTodoItem = () => {
   const postTodoContent = () => {
     axios
       .post(
-        baseUrl + "/todos",
+        API_URL + "/todos",
         { todo: todoContent },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
+        { headers: authHeader() }
       )
-      .then((res) => {
+      .then(() => {
         setTodoContent("");
       });
   };
@@ -26,7 +23,6 @@ const AddTodoItem = () => {
     e.preventDefault();
     postTodoContent();
   };
-
   return (
     <div className="addTodoItemOuter">
       <div className="addTodoItemInner">

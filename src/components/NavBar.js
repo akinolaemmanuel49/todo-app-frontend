@@ -1,13 +1,39 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import API_URL from "../utils/constants";
+import AuthService from "../services/auth.service";
+import authHeader from "../services/auth-header";
 import "./NavBar.css";
 import dropdownImage from "../images/dropdown.svg";
-import { Link, Navigate } from "react-router-dom";
 import SignInView from "../users/SignInView";
 
 const NavBar = (props) => {
+  const [username, setUsername] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+
+  const getUserProfile = () => {
+    axios
+      .get(API_URL + "/users/me", {
+        headers: authHeader(),
+      })
+      .then((res) => {
+        setUsername(res.data.username);
+        setProfileImage(res.data.profile_image);
+      })
+      .catch((err) => {
+        console.log(err);
+        window.location.reload();
+      });
+  };
+
+  useEffect(() => {
+    getUserProfile();
+  }, [username, profileImage]);
+
   const handleSignOut = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
-    <Navigate to="/signin" />;
+    AuthService.signout();
   };
   return (
     <div className="navBar">
@@ -19,14 +45,10 @@ const NavBar = (props) => {
         />
         <div className="navBarProfileView">
           <div className="profileImageContainer">
-            <img
-              className="profileImage"
-              src={props.profileImage}
-              alt="Profile"
-            />
+            <img className="profileImage" src={profileImage} alt="Profile" />
           </div>
           <div className="greeting">
-            <p>Hello, {props.username}</p>
+            <p>Hello, {username}</p>
           </div>
           <div className="signout">
             <Link to={<SignInView />} onClick={handleSignOut}>
