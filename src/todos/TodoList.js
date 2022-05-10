@@ -12,20 +12,6 @@ import { isTokenExpired } from "../utils/isTokenExpired";
 
 const TodoList = (props) => {
   const [todoItems, setTodoItems] = useState([]);
-  // const navigate = useNavigate();
-
-  // const refreshTokenAPI = () => {
-  //   axios
-  //     .get(API_URL + "/users/refresh", { headers: authHeader() })
-  //     .then((res) => {
-  //       localStorage.setItem("accessToken", res.data.access_token);
-  //       console.log("accessTokenRefreshed:", res.data.access_token);
-  //       navigate("/");
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // };
 
   const getTodoList = () => {
     return axios

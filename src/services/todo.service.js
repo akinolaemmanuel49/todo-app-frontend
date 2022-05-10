@@ -1,8 +1,7 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-// const API_URL = "https://todo-app-backend.azurewebsites.net/api/v1";
-const API_URL = "http://localhost:8000/api/v1";
+const API_URL = "https://todo-app-backend.azurewebsites.net/api/v1";
 
 const createTodo = (todo) => {
   return axios.post(API_URL + "/todos", { todo }, { headers: authHeader() });
@@ -30,11 +29,11 @@ const toggleTodoState = (todoId) => {
   );
 };
 
-const UserService = {
+const TodoService = {
   createTodo,
   getTodoState,
   deleteTodo,
   toggleTodoState,
 };
 
-export default UserService;
+export default TodoService;

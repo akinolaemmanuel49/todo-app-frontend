@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import UserService from "../services/user.service";
+import TodoService from "../services/todo.service";
 import "./TodoItem.css";
 import DoneButton from "./DoneButton";
 import DeleteButton from "./DeleteButton";
@@ -14,7 +14,7 @@ const TodoItem = (props) => {
     } else {
       setIsDone(true);
     }
-    UserService.toggleTodoState(props.id);
+    TodoService.toggleTodoState(props.id);
   };
   return (
     <div className="todoItemInner">
