@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import API_URL from "../utils/constants";
 import AuthService from "../services/auth.service";
@@ -8,10 +8,21 @@ import authHeader from "../services/auth-header";
 import "./NavBar.css";
 import dropdownImage from "../images/dropdown.svg";
 import SignInView from "../users/SignInView";
+import UploadProfileImageModal from "./UploadProfileImageModal";
 
 const NavBar = (props) => {
   const [username, setUsername] = useState("");
   const [profileImage, setProfileImage] = useState("");
+  const [show, setShow] = useState(false);
+  const location = useLocation();
+
+  const showModal = () => {
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
 
   const getUserProfile = () => {
     axios
@@ -30,13 +41,17 @@ const NavBar = (props) => {
 
   useEffect(() => {
     getUserProfile();
-  }, [username, profileImage]);
+  }, []);
 
   const handleSignOut = () => {
     AuthService.signout();
   };
   return (
     <div className="navBar">
+      <UploadProfileImageModal
+        show={show}
+        handleClose={hideModal}
+      ></UploadProfileImageModal>
       <div className="navBarDropdownButton">
         <img
           className="dropdownImage"
@@ -44,9 +59,18 @@ const NavBar = (props) => {
           alt="Dropdown button"
         />
         <div className="navBarProfileView">
-          <div className="profileImageContainer">
-            <img className="profileImage" src={profileImage} alt="Profile" />
+          <div className="profileImageContainer" onClick={showModal}>
+            <img
+              className="profileImage"
+              src={
+                location.state.profileImage
+                  ? location.state.profileImage
+                  : profileImage
+              }
+              alt="Profile"
+            />
           </div>
+
           <div className="greeting">
             <p>Hello, {username}</p>
           </div>
