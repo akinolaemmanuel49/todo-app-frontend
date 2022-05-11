@@ -41,7 +41,7 @@ const NavBar = (props) => {
 
   useEffect(() => {
     getUserProfile();
-  }, []);
+  }, [location.state]);
 
   const handleSignOut = () => {
     AuthService.signout();
@@ -60,15 +60,7 @@ const NavBar = (props) => {
         />
         <div className="navBarProfileView">
           <div className="profileImageContainer" onClick={showModal}>
-            <img
-              className="profileImage"
-              src={
-                location.state.profileImage
-                  ? location.state.profileImage
-                  : profileImage
-              }
-              alt="Profile"
-            />
+            <img className="profileImage" src={profileImage} alt="Profile" />
           </div>
 
           <div className="greeting">

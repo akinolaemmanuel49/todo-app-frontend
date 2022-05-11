@@ -22,7 +22,7 @@
 }
 
 .navBarProfileView {
-    display: block;
+    display: none;
     position: fixed;
     background-color: #000000;
     min-width: 300px;

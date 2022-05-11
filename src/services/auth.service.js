@@ -47,7 +47,6 @@ const refreshTokenAPI = () => {
     })
     .then((res) => {
       localStorage.setItem("accessToken", res.data.access_token);
-      console.log("accessTokenRefreshed:", res.data.access_token);
     })
     .catch((err) => {
       console.error(err);

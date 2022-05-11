@@ -4,6 +4,7 @@ import TodoService from "../services/todo.service";
 
 const DeleteButton = (props) => {
   const handleClick = (e) => {
+    e.preventDefault();
     TodoService.deleteTodo(props.todoId);
   };
 
