@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import TodoList from "./todos/TodoList";
+import AllTodos from "./todos/AllTodos";
 import SignInView from "./users/SignInView";
 import SignUpView from "./users/SignUpView";
 import "./App.css";
@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/signin" element={<SignInView />} />
         <Route path="/signup" element={<SignUpView />} />
-        <Route path="/" element={<TodoList />} />
+        <Route path="/" element={<AllTodos />} />
       </Routes>
     </BrowserRouter>
   );

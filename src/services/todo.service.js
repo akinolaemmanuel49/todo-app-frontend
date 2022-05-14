@@ -28,10 +28,16 @@ const toggleTodoState = (todoId) => {
   );
 };
 
+const fetchTodoList = () => {
+  return axios.get(API_URL + "/todos", {
+    headers: authHeader(),
+  });
+};
 const TodoService = {
   createTodo,
   getTodoState,
   deleteTodo,
+  fetchTodoList,
   toggleTodoState,
 };
 
