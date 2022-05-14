@@ -32,9 +32,6 @@ const signin = (username, password) => {
 const signout = () => {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("refreshToken");
-  localStorage.removeItem("username");
-  localStorage.removeItem("profileImage");
-  localStorage.removeItem("todoList");
   window.location.replace("/signin");
 };
 
@@ -47,11 +44,18 @@ const refreshTokenAPI = () => {
     })
     .then((res) => {
       localStorage.setItem("accessToken", res.data.access_token);
-      console.log("accessTokenRefreshed:", res.data.access_token);
     })
     .catch((err) => {
       console.error(err);
     });
+};
+
+const currentUserProfile = () => {
+  return axios.get(API_URL + "/users/me", {
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("accessToken"),
+    },
+  });
 };
 
 const AuthService = {
@@ -59,6 +63,7 @@ const AuthService = {
   signin,
   signout,
   refreshTokenAPI,
+  currentUserProfile,
 };
 
 export default AuthService;

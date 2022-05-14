@@ -14,12 +14,15 @@ const SignInView = (props) => {
     AuthService.signin(username, password)
       .then(() => {
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((err) => {
         console.error(err);
       });
   };
+  if (props.isAuthencated) {
+    return navigate("/");
+  }
   return (
     <div className="background">
       <div className="titleBox">

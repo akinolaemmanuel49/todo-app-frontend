@@ -1,27 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
+
 import "./AddTodoItem.css";
 import plusSignImage from "../images/plusSign.svg";
-import API_URL from "../utils/constants";
 import authHeader from "../services/auth-header";
+import API_URL from "../utils/constants";
 
 const AddTodoItem = () => {
-  const [todoContent, setTodoContent] = useState("");
+  const [todo, setTodo] = useState("");
 
-  const postTodoContent = () => {
-    axios
-      .post(
-        API_URL + "/todos",
-        { todo: todoContent },
-        { headers: authHeader() }
-      )
-      .then(() => {
-        setTodoContent("");
-      });
+  const postTodo = () => {
+    axios.post(API_URL + "/todos", { todo: todo }, { headers: authHeader() });
   };
-  const handleAddTodoItem = (e) => {
+
+  const handleAddTodoAction = (e) => {
     e.preventDefault();
-    postTodoContent();
+    postTodo();
+    window.location.replace("/");
   };
   return (
     <div className="addTodoItemOuter">
@@ -30,15 +25,15 @@ const AddTodoItem = () => {
           className="addTodoItemInput"
           type="text"
           maxLength={64}
-          value={todoContent}
-          onChange={(e) => setTodoContent(e.target.value)}
+          value={todo}
+          onChange={(e) => setTodo(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              handleAddTodoItem(e);
+              handleAddTodoAction(e);
             }
           }}
         />
-        <button className="addTodoItemButton" onClick={handleAddTodoItem}>
+        <button className="addTodoItemButton" onClick={handleAddTodoAction}>
           <img src={plusSignImage} alt="ADD" />
         </button>
       </div>

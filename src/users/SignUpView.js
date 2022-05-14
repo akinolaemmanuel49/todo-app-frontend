@@ -9,31 +9,12 @@ const SignUpView = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  // const handleSignUp = () => {
-  //   axios
-  //     .post(baseUrl + "/users", {
-  //       username: username,
-  //       email: email,
-  //       password: password,
-  //       confirm_password: confirmPassword,
-  //     })
-  //     .then((res) => {
-  //       if (res.data.message) {
-  //         navigate("/signup");
-  //       } else {
-  //         navigate("/signin");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log("ERROR:", err);
-  //     });
-  // };
   const handleSignUp = (e) => {
     e.preventDefault();
     AuthService.signup(username, email, password, confirmPassword).then(
       (res) => {
         console.log(res.data);
+        window.location.replace("/signin");
       },
       (err) => {
         console.error(err);

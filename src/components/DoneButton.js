@@ -2,12 +2,15 @@ import "./DoneButton.css";
 import checkmarkImage from "../images/checkmark.svg";
 import checkmarkImageHidden from "../images/checkmarkHidden.svg";
 
-const DoneButton = (props) => {
+const DoneButton = ({ todoId, isDone, onClickCallback }) => {
   return (
-    <button className="todoDoneButton" onClick={props.onClick}>
+    <button
+      className="todoDoneButton"
+      onClick={(e) => onClickCallback(e, todoId)}
+    >
       <img
         className="checkmarkImage"
-        src={props.isDone ? checkmarkImage : checkmarkImageHidden}
+        src={isDone ? checkmarkImage : checkmarkImageHidden}
         alt="checkmark"
       ></img>
     </button>

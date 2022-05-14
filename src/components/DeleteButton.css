@@ -14,3 +14,7 @@
     outline-width: 2.5px;
     z-index: 1;
 }
+
+.todoDeleteItemButtonHide {
+    display: none;
+}
